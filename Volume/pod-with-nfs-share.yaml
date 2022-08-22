@@ -12,5 +12,5 @@ spec:
   volumes:
   - name: test-vol
     nfs:
-      server: 10.3.97.250           # nfs server ip
-      path: /var/local/nfs-share    # nfs share folder
+      server: 10.3.97.250              # nfs server ip
+      path: /var/local/shared-folder   # nfs share folder
