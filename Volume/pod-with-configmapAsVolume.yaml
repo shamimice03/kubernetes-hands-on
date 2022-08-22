@@ -1,0 +1,16 @@
+#Pod-definition with configmap mounted as a volume into the pod
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-server
+spec:
+  containers:
+  - name: wordpress
+    image: wordpress
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/config  #Directory where files will be located
+  volumes:
+    - name: config-volume
+      configMap:
+        name: user-config
