@@ -3,6 +3,15 @@ kind: Pod
 metadata:
   name: webserver
 spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: topology.kubernetes.io/zone
+            operator: In
+            values:
+            - ap-northeast-1d
   containers:
   - image: nginx:latest
     name: nginx-container
@@ -11,7 +20,6 @@ spec:
       name: test-volume
   volumes:
   - name: test-volume
-    # This AWS EBS volume must already exist.
-    awsElasticBlockStore:
-      volumeID: "vol-0b067ed35227a1bff"    # volume-id
+    awsElasticBlockStore:                  # This AWS EBS volume must already exist. 
+      volumeID: "vol-0b067ed35227a1bff"    # Volume-id
       fsType: ext4 
