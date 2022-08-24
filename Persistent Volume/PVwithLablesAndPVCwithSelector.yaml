@@ -1,0 +1,29 @@
+#PV with lables and PVC with selector
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume01
+  labels:
+    storage-tier: gold
+spec:
+  capacity:
+    storage: 50Mi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain  
+  hostPath:
+      path: /var/local/data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myclaim
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Mi
+  selector:
+    matchLabels:
+      storage-tier: gold
