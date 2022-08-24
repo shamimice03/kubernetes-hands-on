@@ -7,13 +7,29 @@ metadata:
     storage-tier: gold
 spec:
   capacity:
-    storage: 50Mi
+    storage: 100Mi
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain  
   hostPath:
       path: /var/local/data
 ---
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume02
+spec:
+  capacity:
+    storage: 70Mi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+      path: /var/local/test
+
+---
+
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -23,7 +39,7 @@ spec:
     - ReadWriteMany
   resources:
     requests:
-      storage: 20Mi
+      storage: 70Mi
   selector:
     matchLabels:
       storage-tier: gold
