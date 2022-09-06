@@ -6,4 +6,7 @@ spec:
   containers:
   - image: shamimice03/kubectl-image    
     name: kubectl-pod
+    command:
+    - sleep
+    - "10000"
   serviceAccountName: pod-access
