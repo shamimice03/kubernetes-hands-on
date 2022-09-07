@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token   #type must be specified
+metadata:
+  name: sa-secret
+  annotations:
+    kubernetes.io/service-account.name: test-SA  #attach with desired Service Acccount
