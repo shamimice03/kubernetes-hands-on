@@ -3,5 +3,5 @@ kind: Secret
 metadata:
   name: test-sa-secret01
   annotations:
-    kubernetes.io/service-account.name: test-sa
+    kubernetes.io/service-account.name: pod-access
 type: kubernetes.io/service-account-token
