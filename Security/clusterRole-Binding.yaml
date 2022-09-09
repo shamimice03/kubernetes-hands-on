@@ -1,4 +1,3 @@
----
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -23,4 +22,3 @@ roleRef:
   kind: ClusterRole
   name: pv-sc-access
   apiGroup: rbac.authorization.k8s.io
-
