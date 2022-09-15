@@ -1,0 +1,21 @@
+---
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-egress-different-namespace
+  namespace: prod
+spec:
+  podSelector:
+    matchLabels:
+      role: webserver-1
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          role: testserver-1
+      namespaceSelector:
+        matchLabels:
+          team: dev
+    ports:
+    - port: 80
+---
