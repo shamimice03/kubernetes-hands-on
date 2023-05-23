@@ -36,3 +36,8 @@ status: {}
 / # ls
 bin    dev    etc    home   lib    lib64  proc   root   sys    tmp    usr    var
 ```
+
+
+///
+kubectl get pods --show-labels 
+kubectl get pods --show-labels -l app=myapp
