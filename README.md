@@ -1,5 +1,5 @@
-### Kubernetes Commands | CheatSheet
-
+# Kubernetes Commands | CheatSheet
+## Pod 
 - Write manifest for pod
 ```
 >> kubectl run busybox --image=busybox --dry-run=client -o yaml --command -- sleep 3000 > busybox.yaml
