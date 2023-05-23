@@ -96,3 +96,91 @@ status:
   loadBalancer: {}
 
 ```
+***
+## Deployment
+- Generate `deployment` manifest:
+```
+>> kubectl create deploy webapp --image=nginx:1.17 --replicas=3 --dry-run=client -o yaml
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp
+  name: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - image: nginx:1.17
+        name: nginx
+        resources: {}
+status: {}
+
+```
+### Rollout and Rollback
+```
+>>> kubectl rollout -h
+Manage the rollout of one or many resources.
+  
+ Valid resource types include:
+
+  *  deployments
+  *  daemonsets
+  *  statefulsets
+
+Examples:
+  # Rollback to the previous deployment
+  kubectl rollout undo deployment/abc
+  
+  # Check the rollout status of a daemonset
+  kubectl rollout status daemonset/foo
+  
+  # Restart a deployment
+  kubectl rollout restart deployment/abc
+  
+  # Restart deployments with the app=nginx label
+  kubectl rollout restart deployment --selector=app=nginx
+
+Available Commands:
+  history       View rollout history
+  pause         Mark the provided resource as paused
+  restart       Restart a resource
+  resume        Resume a paused resource
+  status        Show the status of the rollout
+  undo          Undo a previous rollout
+
+Usage:
+  kubectl rollout SUBCOMMAND [options]
+```
+### Example:
+```
+>> kubectl rollout history deploy/webapp
+
+deployment.apps/webapp 
+REVISION  CHANGE-CAUSE
+1         <none>
+2         <none>
+
+>> kubectl rollout undo deploy/webapp
+deployment.apps/webapp rolled back
+
+>> kubectl rollout history deploy/webapp
+deployment.apps/webapp 
+
+REVISION  CHANGE-CAUSE
+2         <none>
+3         <none>
+```
+
