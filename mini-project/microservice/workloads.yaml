@@ -1,0 +1,145 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: fleetman-queue
+  name: fleetman-queue
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fleetman-queue
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fleetman-queue
+    spec:
+      containers:
+      - image: richardchesterwood/k8s-fleetman-queue:release1
+        name: k8s-fleetman-queue
+        resources: {}
+status: {}
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: positon-simulator
+  name: positon-simulator
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: positon-simulator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: positon-simulator
+    spec:
+      containers:
+      - image: richardchesterwood/k8s-fleetman-position-simulator:release1
+        name: k8s-fleetman-position-simulator
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+        resources: {}
+status: {}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: position-tracker
+  name: position-tracker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: position-tracker
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: position-tracker
+    spec:
+      containers:
+      - image: richardchesterwood/k8s-fleetman-position-tracker:release1
+        name: k8s-fleetman-position-tracker
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+        resources: {}
+status: {}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: api-gateway
+  name: api-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-gateway
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - image: richardchesterwood/k8s-fleetman-api-gateway:release1
+        name: k8s-fleetman-api-gateway
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+        resources: {}
+status: {}
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp
+  name: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - image: richardchesterwood/k8s-fleetman-webapp-angular:release1
+        name: k8s-fleetman-webapp-angular
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: production-microservice
+        resources: {}
+status: {}
+
