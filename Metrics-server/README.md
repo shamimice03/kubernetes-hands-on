@@ -17,3 +17,6 @@ Therefore, Kubernetes components that need metric information from Metric Server
 ```
 < kubectl top <node / pod>
 ```
+
+### Refs:
+- https://ssup2.github.io/theory_analysis/Kubernetes_Metric_Server/
