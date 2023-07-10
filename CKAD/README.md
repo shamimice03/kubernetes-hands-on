@@ -28,6 +28,9 @@ newpods-9sf8x   1/1     Running   0          2m      10.42.0.10   controlplane  
 
 # Generate YAML for pod
 > k run redis --image=redis123 --dry-run=client -o yaml > redis.yaml
+
+# Pod with commands
+> k run yellow --image=busybox --dry-run=client -o yaml --command -- sleep 1000 
 ```
 
 ### ReplicaSets
@@ -43,6 +46,29 @@ newpods-9sf8x   1/1     Running   0          2m      10.42.0.10   controlplane  
 ```
 # Create deployment
 > k create deploy httpd-frontend --image=httpd:2.4-alpine --replicas 3 
+```
+
+### Namespace
+```
+# Number of namespaces
+>  k get ns --no-headers | wc -l
+
+# Number of pods in a specific namespace
+>  k get pods -n research --no-headers | wc -l
+
+# Create pod on specific namespace
+>  k run redis --image=redis -n finance
+```
+
+### Labels using imperative commands:
+```
+> k run redis --image=redis:alpine --labels='tier=db' --dry-run=client -o yaml
+> k run redis --image=redis:alpine --labels='tier=db,app=webapp' --dry-run=client -o yaml
+```
+
+### Imperative command to expose a pod
+```
+>  k expose pod redis --port=6379 --name=redis-service --type=ClusterIP
 ```
 
 ### Logs
