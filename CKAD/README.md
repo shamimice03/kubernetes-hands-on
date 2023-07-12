@@ -154,3 +154,17 @@ status:
     ingress:
     - ip: 10.99.137.30
 ```
+
+### API-Versions
+- Enable Or Disable A Kubernetes API
+- Add `runtime-config` filed on kube-api server manifests
+- Enable the `v1alpha1` version for `rbac.authorization.k8s.io` API group on the controlplane node.
+- Add the `--runtime-config=rbac.authorization.k8s.io/v1alpha1` option to the `kube-apiserver.yaml` file.
+- `kubectl explain deployment` to view preferred version
+
+### `kubectl convert` 
+- Install https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+```
+# Change the deprecated API version to the networking.k8s.io/v1 and create the resource
+> kubectl convert -f ingress-old.yaml --output-version networking.k8s.io/v1 > ingress.yaml
+```
