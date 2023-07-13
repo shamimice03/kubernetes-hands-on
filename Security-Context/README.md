@@ -56,6 +56,29 @@ spec:
       allowPrivilegeEscalation: false
 ```
 
+### Container level will get priority:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-pod
+spec:
+  securityContext:
+    runAsUser: 1001 # This will be replaced by container level 
+  containers:
+  -  image: ubuntu
+     name: web
+     command: ["sleep", "5000"]
+     securityContext:
+      runAsUser: 1002  # Process will run with 1002 
+
+  -  image: ubuntu
+     name: sidecar
+     command: ["sleep", "5000"]
+
+```
+
+
 ### Set capabilities for a Container ( Only available on container level )
 ```yaml
 apiVersion: v1
