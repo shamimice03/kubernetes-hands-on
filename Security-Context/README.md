@@ -74,7 +74,8 @@ The capabilities field allows fine-grained control over the Linux capabilities t
 Linux capabilities are distinct privileges that can be granted to processes, allowing them to perform specific actions. 
 In this case, the add field specifies that two capabilities, `NET_ADMIN` and `SYS_TIME`, should be added to the container's capabilities.
 
- `NET_ADMIN`  capability allows the container to perform various network-related administrative tasks.
+ `NET_ADMIN`  capability allows the container to perform various network-related administrative tasks. 
+ 
  `SYS_TIME` capability allows the container to set system time and date.
 By adding these capabilities to the container, it gains the ability to perform these privileged actions within its own namespace.
 
