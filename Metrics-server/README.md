@@ -2,6 +2,8 @@
 https://github.com/kubernetes-sigs/metrics-server
 
 ### Architecture:
+![image](https://github.com/shamimice03/kubernetes-hands-on/assets/19708705/51ed413c-2970-43bf-a800-c30e037ab79a)
+
 ![image](https://github.com/shamimice03/kubernetes-hands-on/assets/19708705/8a3574e9-a4cd-450d-b30b-be87f9096847)
 
 - kubelet has a built-in Node and Pod Metric Collector based on Linux's Cgroup called cAdvisor. 
