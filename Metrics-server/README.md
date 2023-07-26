@@ -1,6 +1,7 @@
 ### Overview:
-https://github.com/kubernetes-sigs/metrics-server
-
+- https://github.com/kubernetes-sigs/metrics-server
+- https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/#metrics-server
+- 
 ### Architecture:
 ![image](https://github.com/shamimice03/kubernetes-hands-on/assets/19708705/51ed413c-2970-43bf-a800-c30e037ab79a)
 
