@@ -30,6 +30,9 @@
 - Suitable for containers that must run successfully and then stop.
 - Illustrated with a Pod example using the OnFailure policy.
 
+🔁 **Never Restart Policy**
+- Won't restart 
+
 👍 **Conclusion**
 - Kubernetes restart policies enable self-healing for containers.
 - Always restarts containers upon termination, while OnFailure restarts only on errors.
