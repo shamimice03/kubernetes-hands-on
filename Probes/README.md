@@ -1,8 +1,9 @@
 ### Probes
 
+- Startup probes let Kubernetes know whether your app (running in a container inside Pod) has properly started.
 - Liveness probes let Kubernetes know whether your app (running in a container inside Pod) is healthy.
 - Readiness probes let Kubernetes know when your app (running in a container inside Pod) is ready to serve traffic.
-- Startup probes let Kubernetes know whether your app (running in a container inside Pod) has properly started.
+
 
 ## Probes priority:
 ### Startup probe
